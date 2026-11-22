@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>蜂巢点算</title>
+    <meta name="description" content="把一点到三点放进六角格，让每条箭头上的和数刚好成立。" />
+    <meta name="theme-color" content="#1B2430" />
+    <link rel="icon" href="./assets/favicon-ClMKCWco.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/index-DaMtlXx3.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      (async function () {
+        var total = 22;
+        var parts = [];
+        for (var i = 0; i < total; i++) {
+          var name = "./assets/part-" + String(i).padStart(2, "0") + ".js";
+          var res = await fetch(name);
+          if (!res.ok) throw new Error(name);
+          parts.push(await res.text());
+        }
+        var script = document.createElement("script");
+        script.text = parts.join("");
+        document.body.appendChild(script);
+      })().catch(function (err) {
+        document.body.insertAdjacentHTML("beforeend", "<p style=\"margin:1rem;font-family:sans-serif\">页面没有载入：" + err.message + "</p>");
+      });
+    </script>
+  </body>
+</html>
